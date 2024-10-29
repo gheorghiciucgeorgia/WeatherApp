@@ -1,0 +1,24 @@
+:root {
+    --beige: #F3F3E0;
+    --navy: #102e62;
+    --sea: #608BC1;
+    --winter: #CBDCEB;
+    --poppins: "Poppins", sans-serif;
+}
+
+body {
+    font-family: var(--poppins);
+    background-color: var(--navy);
+}
+
+.container {
+    background-color: white;
+    margin: 5% 20%;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.not-found img {
+    width: 70%;
+    height: 20%;
+}
