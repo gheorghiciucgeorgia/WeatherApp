@@ -69,7 +69,7 @@ This app uses the OpenWeatherMap API. Ensure you have an API key:
 - Ensures the input field is not empty before making an API call.
 
 ## Preview
-![Weather App Screenshot](images/preview.png)
+![Weather App Screenshot](images/weather-app-preview.png)
 
 ---
 
