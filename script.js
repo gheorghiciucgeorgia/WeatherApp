@@ -2,12 +2,13 @@ const container = document.querySelector('.container');
 const search = document.querySelector('.search-box button');
 const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
+const searchInput = document.querySelector('.search-box input');
 const error404 = document.querySelector('.not-found');
 
-search.addEventListener('click', () => {
+function searchWeather() {
 
-    const APIKey = 'bb24b5add17726395e862bfc276db60';
-    const city = document.querySelector('.search-box input');
+    const APIKey = 'bb24b5add17726395e862bfc276db60e';
+    const city = document.querySelector('.search-box input').value;
 
     if (city == '') {
         return;
@@ -18,7 +19,7 @@ search.addEventListener('click', () => {
         .then(json => {
 
             if (json.cod === '404') {
-                container.style.height = '400px';
+                container.style.height = '460px';
                 weatherBox.style.display = 'none';
                 weatherDetails.style.display = 'none';
                 error404.style.display = 'block';
@@ -35,25 +36,45 @@ search.addEventListener('click', () => {
             const humidity = document.querySelector('.weather-details .humidity span');
             const wind = document.querySelector('.weather-details .wind span');
 
-            switch(json.weather[0].main){
+            switch (json.weather[0].main) {
                 case 'Clear':
-                    image.src='images/sun.png';
+                    image.src = 'images/sun.png';
                     break;
 
                 case 'Rain':
-                    image.src='images/rain.png';
+                    image.src = 'images/rain.png';
                     break;
-                
+
                 case 'Snow':
                     image.src = 'images/snowfall.png';
                     break;
-                
+
                 case 'Clouds':
-                    image.src = 'images/cloudy-day';
+                    image.src = 'images/cloudy-day.png';
                     break;
-                case ''
+                case 'Wind':
+                    image.srcc = 'images/wind-storm.png';
+                    break;
+                default:
+                    image.src = '';
             }
+            temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
+            description.innerHTML = `${json.weather[0].description}`;
+            humidity.innerHTML = `${json.main.humidity}%`;
+            wind.innerHTML = `${parseInt(json.wind.speed)}km/h`;
 
-        })
+            weatherBox.style.display = '';
+            weatherDetails.style.display = '';
+            weatherBox.classList.add('fadeIn');
+            weatherDetails.classList.add('fadeIn');
+            container.style.height = '617px';
+        });
 
-})
+}
+search.addEventListener('click', searchWeather);
+
+searchInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        searchWeather();
+    }
+});
