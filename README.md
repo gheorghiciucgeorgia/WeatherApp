@@ -71,6 +71,3 @@ This app uses the OpenWeatherMap API. Ensure you have an API key:
 ## Preview
 ![Weather App Screenshot](images/weather-app-preview.png)
 
----
-
-Enjoy using the Weather App! Feel free to contribute or suggest improvements.
